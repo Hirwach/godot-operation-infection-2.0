@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvh77albhqyd7"]
+
+[ext_resource type="ArrayMesh" uid="uid://de30plgws18io" path="res://Models/molotov.tres" id="1_j2k22"]
+[ext_resource type="Script" path="res://Scripts/molotov.gd" id="1_sx2dw"]
+
+[node name="Molotov" type="MeshInstance3D"]
+mesh = ExtResource("1_j2k22")
+script = ExtResource("1_sx2dw")

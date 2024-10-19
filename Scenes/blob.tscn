@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://c430glmrqtuxj"]
+
+[ext_resource type="Script" path="res://Scripts/blob.gd" id="1_6uixf"]
+[ext_resource type="ArrayMesh" uid="uid://dohoc4jjyae8h" path="res://Models/blob.tres" id="1_u17if"]
+[ext_resource type="Texture2D" uid="uid://dt4omb1ueuuss" path="res://icon.svg" id="3_mfnxl"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fttug"]
+radius = 1.0
+
+[node name="Blob" type="CharacterBody3D" groups=["Enemy"]]
+collision_layer = 2
+collision_mask = 23
+script = ExtResource("1_6uixf")
+
+[node name="Head" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_u17if")
+
+[node name="Sprite3D" type="Sprite3D" parent="Head"]
+transform = Transform3D(0.44, 0, 0, 0, 0.44, 0, 0, 0, 0.44, 0, 0.338375, -1.10044)
+texture = ExtResource("3_mfnxl")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Head"]
+transform = Transform3D(0.44, 0, 0, 0, 0.44, 0, 0, 0, 0.44, 0, 1.866, 0)
+modulate = Color(0.873462, 0.345444, 0, 1)
+texture = ExtResource("3_mfnxl")
+
+[node name="Shooter" type="Marker3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.32894)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_fttug")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+target_desired_distance = 2.0
+avoidance_enabled = true
+height = 2.0
+radius = 1.0
+keep_y_velocity = false
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -15)
+collision_mask = 5
+debug_shape_custom_color = Color(0.619046, 0.368825, 1, 1)
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 3.5
+autostart = true
+
+[node name="InfectTimer" type="Timer" parent="."]
+wait_time = 7.0
+one_shot = true
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="InfectTimer" to="." method="_on_infect_timer_timeout"]

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://8u33uivyjlue"]
+
+[ext_resource type="ArrayMesh" uid="uid://doxvs3beqbp1o" path="res://Models/long_cube.tres" id="1_f5tpy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dn8je"]
+size = Vector3(2, 2, 12)
+
+[node name="Cube" type="StaticBody3D"]
+collision_layer = 4
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_f5tpy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_dn8je")

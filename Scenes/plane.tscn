@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfkq7edr7gkaj"]
+
+[ext_resource type="ArrayMesh" uid="uid://bthochn5e3x8n" path="res://Models/Plane.tres" id="1_1epv7"]
+
+[node name="Plane" type="MeshInstance3D"]
+mesh = ExtResource("1_1epv7")

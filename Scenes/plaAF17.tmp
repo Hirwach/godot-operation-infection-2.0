@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://xen44dgkpsii"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_5abfd"]
+[ext_resource type="Texture2D" uid="uid://bciybeo47fafi" path="res://Sprites/test_chest_plate.png" id="3_ufc4p"]
+[ext_resource type="ArrayMesh" uid="uid://b6krway4ugi6y" path="res://Models/Head.tres" id="3_wu3pi"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_72rtc"]
+radius = 0.819437
+height = 3.02778
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_5abfd")
+
+[node name="Head" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25501, 0)
+mesh = ExtResource("3_wu3pi")
+
+[node name="Sprite3D" type="Sprite3D" parent="Head"]
+transform = Transform3D(-8.30516e-09, 0, 0.19, 0, 0.19, 0, -0.19, 0, -8.30516e-09, 0.861312, 0, 0)
+texture = ExtResource("3_ufc4p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22853, 0)
+shape = SubResource("CapsuleShape3D_72rtc")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 2.37297, 0)
+spring_length = 7.0
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]

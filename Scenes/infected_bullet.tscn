@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhtw76bp822gx"]
+
+[ext_resource type="ArrayMesh" uid="uid://dwpsu5om1hs78" path="res://Models/infected_bullet.tres" id="1_1xqcd"]
+[ext_resource type="Script" path="res://Scripts/infected_bullet.gd" id="1_55hlf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2ilqe"]
+size = Vector3(0.284, 0.283, 1.116)
+
+[node name="infected_bullet" type="Area3D"]
+collision_layer = 16
+collision_mask = 6
+script = ExtResource("1_55hlf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_2ilqe")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+mesh = ExtResource("1_1xqcd")
+skeleton = NodePath("../..")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

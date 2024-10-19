@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://cspgoooajjlia"]
+
+[ext_resource type="Script" path="res://Scripts/blob_phase_2.gd" id="1_p7i8y"]
+[ext_resource type="ArrayMesh" uid="uid://dohoc4jjyae8h" path="res://Models/blob.tres" id="2_w8qwu"]
+[ext_resource type="Texture2D" uid="uid://dt4omb1ueuuss" path="res://icon.svg" id="3_hj7bx"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_72you"]
+radius = 1.4
+
+[node name="BlobPhase2" type="CharacterBody3D" groups=["Enemy"]]
+collision_layer = 2
+collision_mask = 23
+script = ExtResource("1_p7i8y")
+
+[node name="Head" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_w8qwu")
+
+[node name="Sprite3D" type="Sprite3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.996186)
+texture = ExtResource("3_hj7bx")
+
+[node name="Shooter" type="Marker3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.646)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_72you")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -50)
+collision_mask = 7
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_desired_distance = 10.0
+target_desired_distance = 10.0
+avoidance_enabled = true
+radius = 2.0
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 3.5
+one_shot = true
+autostart = true
+
+[node name="InfectTimer" type="Timer" parent="."]
+wait_time = 10.0
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="InfectTimer" to="." method="_on_infect_timer_timeout"]

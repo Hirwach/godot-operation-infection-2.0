@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://br6n8rvcyi5bs"]
+
+[ext_resource type="ArrayMesh" uid="uid://bq2ro7x8e8qai" path="res://Models/cube.tres" id="1_fcb10"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wwpej"]
+size = Vector3(2, 2, 2)
+
+[node name="Cube" type="StaticBody3D"]
+collision_layer = 4
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_fcb10")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_wwpej")
