@@ -40,9 +40,14 @@ func _ready():
 	
 	SignalManager.phase_two_started.connect(phase_deux_started)
 	
-
+func getBigger():
+	%Head.scale.x += 1
+	%Head.scale.y += 1
+	%Head.scale.z += 1
 
 func _process(delta):
+	
+	
 	
 	set_move_direction()
 	
@@ -126,7 +131,7 @@ func shoot_infection():
 	
 	get_tree().root.add_child(inf)
 	
-	inf.global_position = m.global_position
+	inf.global_position = m.global_positionf
 	inf.setup(m.global_position.direction_to(m_front.global_position))
 	
 	can_shoot_infection = false

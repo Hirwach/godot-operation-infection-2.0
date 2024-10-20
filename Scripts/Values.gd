@@ -2,12 +2,12 @@ extends Node
 
 
 
-const player_speed = 450
+const player_speed = 900
 const camera_pan_speed = 2.5
 const rotate_speed = 15
 const lean_speed = 1
 const lean_value = 20
-const enemy_speed = 250
+const enemy_speed = 450
 
 const blob_max_range = 30
 const blob_fov_angle = 30
