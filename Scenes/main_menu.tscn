@@ -1,6 +1,81 @@
-[gd_scene load_steps=2 format=3 uid="uid://cxdp03ngfi0gt"]
+[gd_scene load_steps=18 format=3 uid="uid://cxdp03ngfi0gt"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_ycu1x"]
+[ext_resource type="Texture2D" uid="uid://4nkexl0gmjrk" path="res://Sprites/buttons/button_attack_click.png" id="2_mnlkt"]
+[ext_resource type="Texture2D" uid="uid://b1f623h1ptis1" path="res://Sprites/buttons/button_back_basic.png" id="3_3u3c3"]
+[ext_resource type="Texture2D" uid="uid://mhsnkpwq5t1b" path="res://Sprites/buttons/button_attack_alien_basic.png" id="3_umdq3"]
+[ext_resource type="Texture2D" uid="uid://dhgwxsy3ntyuq" path="res://Sprites/buttons/button_attack_hover.png" id="4_3vjyi"]
+[ext_resource type="Texture2D" uid="uid://j376vmjl63pg" path="res://Sprites/buttons/button_credits_hover.png" id="4_t1es5"]
+[ext_resource type="Texture2D" uid="uid://diafut1tcon31" path="res://Sprites/buttons/button_help_basic.png" id="5_mqkq6"]
+[ext_resource type="Texture2D" uid="uid://bvftbjyb18wmc" path="res://Sprites/buttons/button_credits_alien_basic.png" id="6_dybrj"]
+[ext_resource type="Texture2D" uid="uid://cu73ta8g5jtyo" path="res://Sprites/bg/bg_red_blackvignette.png" id="6_ygkex"]
+[ext_resource type="Texture2D" uid="uid://d3k8cfjbuhle4" path="res://Sprites/extra_junk/V_bio_pic_transparentbg.png" id="7_pgeqy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n8hnv"]
+atlas = ExtResource("2_mnlkt")
+region = Rect2(0, 0, 608, 348)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5l37e"]
+atlas = ExtResource("3_umdq3")
+region = Rect2(0, 0, 608, 348)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4w73"]
+atlas = ExtResource("4_3vjyi")
+region = Rect2(0, 0, 608, 348)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cxx3n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n8hnv")
+}],
+"loop": true,
+"name": &"click",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5l37e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4w73")
+}],
+"loop": true,
+"name": &"hover",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jglyu"]
+atlas = ExtResource("6_dybrj")
+region = Rect2(0, 0, 912, 348)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufvl2"]
+atlas = ExtResource("4_t1es5")
+region = Rect2(0, 0, 912, 348)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bert8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jglyu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufvl2")
+}],
+"loop": true,
+"name": &"hover",
+"speed": 5.0
+}]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -13,27 +88,109 @@ script = ExtResource("1_ycu1x")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 79.0
-offset_top = -170.0
-offset_right = 413.0
-offset_bottom = -63.0
-grow_vertical = 0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -391.0
+offset_top = 206.0
+offset_right = -183.0
+offset_bottom = 313.0
+grow_horizontal = 2
 
 [node name="START" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-text = "START"
+size_flags_vertical = 3
 
-[node name="QUIT" type="Button" parent="VBoxContainer"]
+[node name="StartSprite" type="AnimatedSprite2D" parent="VBoxContainer/START"]
+position = Vector2(110.046, 56.75)
+scale = Vector2(0.331897, 0.331897)
+sprite_frames = SubResource("SpriteFrames_cxx3n")
+animation = &"click"
+autoplay = "default"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 510.0
+offset_right = 175.0
+offset_bottom = 605.0
+
+[node name="QUIT" type="Button" parent="VBoxContainer2"]
 layout_mode = 2
-text = "QUIT"
+size_flags_vertical = 3
 
-[node name="CREDITS" type="Button" parent="VBoxContainer"]
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer2/QUIT"]
+position = Vector2(46, 47)
+scale = Vector2(0.312212, 0.288897)
+texture = ExtResource("3_3u3c3")
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -352.0
+offset_top = -4.0
+offset_right = -146.0
+offset_bottom = 98.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CREDITS" type="Button" parent="VBoxContainer3"]
 layout_mode = 2
-text = "CREDITS"
+size_flags_vertical = 3
 
+[node name="CreditSprite" type="AnimatedSprite2D" parent="VBoxContainer3/CREDITS"]
+position = Vector2(101, 47)
+scale = Vector2(0.22807, 0.285308)
+sprite_frames = SubResource("SpriteFrames_bert8")
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 191.0
+offset_top = 514.0
+offset_right = 211.0
+offset_bottom = 554.0
+scale = Vector2(5.03353, 2.31306)
+
+[node name="HowToPlay" type="Button" parent="VBoxContainer4"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer4/HowToPlay"]
+position = Vector2(10.132, 19.0224)
+scale = Vector2(0.0640471, 0.116778)
+texture = ExtResource("5_mqkq6")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_ygkex")
+expand_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer"]
+z_index = 1
+offset_left = 587.0
+offset_top = 2.0
+offset_right = 629.0
+offset_bottom = 42.0
+scale = Vector2(10.9953, 16.1489)
+texture = ExtResource("7_pgeqy")
+expand_mode = 1
+
+[connection signal="mouse_entered" from="VBoxContainer/START" to="." method="_on_start_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/START" to="." method="_on_start_mouse_exited"]
 [connection signal="pressed" from="VBoxContainer/START" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="VBoxContainer/QUIT" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="VBoxContainer/CREDITS" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="VBoxContainer2/QUIT" to="." method="_on_quit_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer3/CREDITS" to="." method="_on_credits_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer3/CREDITS" to="." method="_on_credits_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer3/CREDITS" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="VBoxContainer4/HowToPlay" to="." method="_on_how_to_play_pressed"]
