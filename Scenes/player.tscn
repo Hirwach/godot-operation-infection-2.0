@@ -61,6 +61,11 @@ one_shot = true
 [node name="MolotovCountdown" type="Timer" parent="."]
 one_shot = true
 
+[node name="LaserCountdown" type="Timer" parent="."]
+wait_time = 7.0
+one_shot = true
+
 [connection signal="timeout" from="BulletCooldown" to="." method="_on_bullet_cooldown_timeout"]
 [connection signal="timeout" from="InfectionCountdown" to="." method="_on_infection_countdown_timeout"]
 [connection signal="timeout" from="MolotovCountdown" to="." method="_on_molotov_countdown_timeout"]
+[connection signal="timeout" from="LaserCountdown" to="." method="_on_laser_countdown_timeout"]

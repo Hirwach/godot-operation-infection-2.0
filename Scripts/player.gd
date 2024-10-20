@@ -4,9 +4,11 @@ signal PlayerDeath
 @onready var bullet_cooldown = $BulletCooldown
 @onready var infection_countdown = $InfectionCountdown
 @onready var molotov_countdown = $MolotovCountdown
+@onready var laser_countdown = $LaserCountdown
 
 const INFECTED_BULLET = preload("res://Scenes/infected_bullet.tscn")
 const Molotov = preload("res://Scenes/molotov.tscn")
+const LASER = preload("res://Scenes/laser.tscn")
 
 var move_direction : Vector3 = Vector3.ZERO
 
@@ -33,7 +35,9 @@ var phase_two_started : bool = false
 var can_shoot_bullets : bool = true
 var can_shoot_infection : bool = true
 var can_shoot_molotov : bool = true
-
+var can_shoot_laser : bool = true
+var laser_active : bool = false
+var laser_instance : Node = null #store laser instance
 
 
 func _ready():
@@ -82,8 +86,16 @@ func process_attack():
 	if Input.is_action_just_pressed("Shoot3"):
 		shoot_molotov()
 	
+	if Input.is_action_just_pressed("Shoot4"):
+		shoot_laser()
 	
-	pass
+	if Input.is_action_pressed("Shoot4"):
+		if not laser_active:
+			shoot_laser()
+
+	elif Input.is_action_just_released("Shoot4"):
+		if laser_active:
+			deactivate_laser()	
 	
 	
 
@@ -133,6 +145,34 @@ func shoot_infection():
 	can_shoot_infection = false
 	infection_countdown.start()
 
+func shoot_laser():
+	if not can_shoot_laser:
+		return
+		
+	var laser_instance = LASER.instantiate()
+	get_tree().root.add_child(laser_instance)
+	
+	laser_instance.global_position = m.global_position
+	
+	var direction = m.global_position.direction_to(m_front.global_position)
+	laser_instance.target_position = laser_instance.global_position + direction * 100  # Adjust the distance as needed
+	
+	laser_active = true
+	laser_instance.connect("on_laser_collide", Callable(self, "_on_laser_collide"))  # Connect laser collision signal to handle damage
+	laser_instance.laser_activate(0.5)  # Activate the laser animation/effects
+	can_shoot_laser = false
+	laser_countdown.start()
+	
+func deactivate_laser():
+	if laser_instance:
+		laser_instance.laser_deactivate(0.5)  # Deactivate the laser
+		laser_instance.queue_free()  # Free the laser instance
+		laser_instance = null
+	laser_active = false
+
+func _on_laser_collide(enemy: CharacterBody3D):
+	# Handle laser collision with an enemy and apply damage
+	enemy.take_damage(Values.laser_damage)
 
 func shoot_bullet():
 	
@@ -223,4 +263,8 @@ func _on_infection_countdown_timeout():
 
 
 func _on_molotov_countdown_timeout():
+	can_shoot_molotov = true
+	
+	
+func _on_laser_countdown_timeout():
 	can_shoot_molotov = true

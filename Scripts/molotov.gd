@@ -46,4 +46,3 @@ func boom():
 	b.global_position = global_position
 	
 	queue_free()
-

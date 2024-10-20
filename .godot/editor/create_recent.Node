@@ -1,3 +1,7 @@
+Timer
+MeshInstance3D
+CollisionShape3D
+Area3D
 ColorRect
 CanvasLayer
 Button
