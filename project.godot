@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 Values="*res://Scripts/Values.gd"
 SignalManager="*res://Scripts/SignalManager.gd"
 
+[dotnet]
+
+project/assembly_name="Game Jam"
+
 [filesystem]
 
 import/blender/enabled=false
