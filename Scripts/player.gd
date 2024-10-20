@@ -5,10 +5,15 @@ signal PlayerDeath
 @onready var infection_countdown = $InfectionCountdown
 @onready var molotov_countdown = $MolotovCountdown
 
+enum Weapons {gun, infection, molotov}
+
+var current_weapon : Weapons = Weapons.gun
+
 const INFECTED_BULLET = preload("res://Scenes/infected_bullet.tscn")
 const Molotov = preload("res://Scenes/molotov.tscn")
 
 var move_direction : Vector3 = Vector3.ZERO
+var look_direction : Vector3 = Vector3.ZERO
 
 var target_rotation : float = 0
 var target_lean : float = 0
@@ -47,6 +52,8 @@ func _process(delta):
 	
 	set_move_direction()
 	
+	set_look_direction()
+	
 	
 	process_movement(delta)
 	
@@ -60,6 +67,12 @@ func _process(delta):
 	move_and_slide()
 
 
+func next_weapon():
+	if current_weapon == Weapons.gun : current_weapon = Weapons.infection
+	elif current_weapon == Weapons.infection : current_weapon = Weapons.molotov
+	else : current_weapon = Weapons.gun
+
+
 func process_attack():
 	
 	
@@ -70,22 +83,28 @@ func process_attack():
 	if not phase_two_started:
 		return
 	
+	if Input.is_action_just_pressed("switch") : next_weapon()
 	
 	if Input.is_action_pressed("Shoot1"):
-		shoot_bullet()
-	
-	
-	if Input.is_action_just_pressed("Shoot2"):
-		shoot_infection()
-	
-	
-	if Input.is_action_just_pressed("Shoot3"):
-		shoot_molotov()
-	
+		if current_weapon == Weapons.gun : shoot_bullet()
+		elif current_weapon == Weapons.infection : shoot_infection()
+		elif current_weapon == Weapons.molotov : shoot_molotov()
 	
 	pass
 	
 	
+
+
+func set_look_direction():
+	var look_axis = Vector2(Input.get_action_strength("right_look") - Input.get_action_strength("left_look"),
+	Input.get_action_strength("down_look") - Input.get_action_strength("up_look"))
+	
+	look_direction = Vector3( look_axis.x, 0, look_axis.y)
+	
+	look_direction = look_direction.rotated(Vector3.UP, spring_arm_3d.rotation.y).normalized()
+	
+	look_direction.y = 0
+
 
 
 func phase_deux_started():
@@ -204,7 +223,11 @@ func pan_camera(delta : float):
 
 func look_around(delta : float):
 	
-	if move_direction != Vector3.ZERO :
+	if look_direction != Vector3.ZERO :
+		target_rotation = Vector2(look_direction.x, -look_direction.z).angle()
+		if move_direction == Vector3.ZERO : target_lean = 0
+	
+	elif move_direction != Vector3.ZERO :
 		target_rotation = Vector2(move_direction.x, -move_direction.z).angle()
 		target_lean = deg_to_rad(Values.lean_value)
 	else : target_lean = 0

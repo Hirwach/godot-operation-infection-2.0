@@ -2,7 +2,7 @@ extends Node
 
 
 
-const player_speed = 10000
+const player_speed = 900
 const camera_pan_speed = 2.5
 const rotate_speed = 15
 const lean_speed = 1
