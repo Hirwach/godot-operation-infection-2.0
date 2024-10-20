@@ -1,0 +1,40 @@
+[gd_resource type="ArrayMesh" load_steps=3 format=4 uid="uid://bi8ifg5mkpqsr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vk5xk"]
+resource_name = "Material"
+cull_mode = 2
+albedo_color = Color(0.516663, 0.299854, 0.236754, 1)
+metallic = 1.0
+roughness = 0.879447
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ettvg"]
+_surfaces = [{
+"aabb": AABB(-100, 0, -100, 200, 1e-05, 200),
+"format": 34896613377,
+"index_count": 90,
+"index_data": PackedByteArray("AAACAAEAAgAEAAMABAAGAAUABgAIAAcACAAKAAkACgAMAAsADAAOAA0ADgAQAA8AEAASABEAEgAUABMAFAAWABUAFgAYABcAGAAaABkAGgAcABsAHAAeAB0AHgAAAB8AAAAEAAIABAAIAAYACAAMAAoADAAQAA4AEAAUABIAFAAYABYAGAAcABoAHAAAAB4AAAAIAAQACAAQAAwAEAAYABQAGAAAABwAAAAQAAgAEAAAABgA"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 32,
+"vertex_data": PackedByteArray("/38AAAAAAAAGZwAAdQIAAANPAAC+CQAA4jgAAJIVAAB9JQAAfSUAAJIVAADiOAAAvgkAAANPAAB1AgAABmcAAAAAAAD/fwAAdQIAAPiYAAC+CQAA+7AAAJIVAAAcxwAAfSUAAIHaAADiOAAAbOoAAANPAABA9gAABmcAAIn9AAD/fwAA//8AAPiYAACJ/QAA+7AAAED2AAAcxwAAbOoAAIHaAACB2gAAbOoAABzHAABA9gAA+7AAAIn9AAD4mAAA//8AAP9/AACJ/QAABmcAAED2AAADTwAAbOoAAOI4AACB2gAAfSUAABzHAACSFQAA+7AAAL4JAAD4mAAAdQIAAA==")
+}]
+blend_shape_mode = 0
+
+[resource]
+resource_name = "PlayArea_Circle"
+_surfaces = [{
+"aabb": AABB(-100, 0, -100, 200, 1e-05, 200),
+"attribute_data": PackedByteArray("AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8="),
+"format": 34896613399,
+"index_count": 90,
+"index_data": PackedByteArray("AAACAAEAAgAEAAMABAAGAAUABgAIAAcACAAKAAkACgAMAAsADAAOAA0ADgAQAA8AEAASABEAEgAUABMAFAAWABUAFgAYABcAGAAaABkAGgAcABsAHAAeAB0AHgAAAB8AAAAEAAIABAAIAAYACAAMAAoADAAQAA4AEAAUABIAFAAYABYAGAAcABoAHAAAAB4AAAAIAAQACAAQAAwAEAAYABQAGAAAABwAAAAQAAgAEAAAABgA"),
+"material": SubResource("StandardMaterial3D_vk5xk"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 32,
+"vertex_data": PackedByteArray("/38AAAAA/78GZwAAdQL/vwNPAAC+Cf+/4jgAAJIV/799JQAAfSX/v5IVAADiOP+/vgkAAANP/791AgAABmf/vwAAAAD/f/+/dQIAAPiY/7++CQAA+7D/v5IVAAAcx/+/fSUAAIHa/7/iOAAAbOr/vwNPAABA9v+/BmcAAIn9/7//fwAA////v/iYAACJ/f+/+7AAAED2/78cxwAAbOr/v4HaAACB2v+/bOoAABzH/79A9gAA+7D/v4n9AAD4mP+///8AAP9//7+J/QAABmf/v0D2AAADT/+/bOoAAOI4/7+B2gAAfSX/vxzHAACSFf+/+7AAAL4J/7/4mAAAdQL/v////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ettvg")
