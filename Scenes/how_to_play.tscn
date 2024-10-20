@@ -1,0 +1,103 @@
+[gd_scene load_steps=6 format=3 uid="uid://yunvmftpsixi"]
+
+[ext_resource type="Script" path="res://Scripts/how_to_play.gd" id="1_qajaj"]
+[ext_resource type="Texture2D" uid="uid://385kxu1kqsbb" path="res://Sprites/bg/bg_pink.png" id="2_lwrw8"]
+[ext_resource type="Texture2D" uid="uid://b1f623h1ptis1" path="res://Sprites/buttons/button_back_basic.png" id="3_widaa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kpm82"]
+atlas = ExtResource("3_widaa")
+region = Rect2(0, 0, 304, 348)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tqp6v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kpm82")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="HowToPlay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qajaj")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+z_index = -5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_lwrw8")
+expand_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = 50.0
+offset_top = 40.0
+offset_right = 90.0
+offset_bottom = 80.0
+scale = Vector2(2.56122, 2.68927)
+
+[node name="Back" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+flat = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/VBoxContainer/Back"]
+position = Vector2(19.5219, 21.1954)
+scale = Vector2(0.15, 0.15)
+sprite_frames = SubResource("SpriteFrames_tqp6v")
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 58.0
+offset_top = 216.0
+offset_right = 689.0
+offset_bottom = 291.0
+scale = Vector2(1.19866, 1.20918)
+text = "Operation Directives:
+Phase 1 [Stealth]: Stealthily assassinate enemy cells from behind to gain power.
+Phase 2 [Shoot]: The immune system has noticed you. Shoot the incoming hordes!"
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+offset_left = 59.0
+offset_top = 367.0
+offset_right = 397.0
+offset_bottom = 494.0
+scale = Vector2(0.952901, 1.5974)
+text = "Keyboard *
+Move - WASD
+Rotate Camera - Q/E
+Kill [Phase 1] - Tap X while behind an enemy
+Shoot [Phase 2] - R, F, V"
+
+[node name="Label3" type="Label" parent="CanvasLayer"]
+offset_left = 431.0
+offset_top = 368.0
+offset_right = 634.0
+offset_bottom = 495.0
+scale = Vector2(1.29226, 1.53922)
+text = "XBox GamePad*
+Move - L Joystick
+Rotate Camera - R Joystick
+Kill (Phase 1) - X
+Shoot R"
+
+[node name="Label4" type="Label" parent="CanvasLayer"]
+offset_left = 199.0
+offset_top = 61.0
+offset_right = 518.0
+offset_bottom = 110.0
+scale = Vector2(1.18052, 1.39655)
+text = "you play as a virus. Operation: Infect.
+It won't be easy. The body has defenses..."
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Back" to="." method="_on_back_pressed"]

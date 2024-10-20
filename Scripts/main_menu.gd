@@ -13,12 +13,11 @@ func _on_quit_pressed() -> void:
 
 
 func _on_credits_pressed() -> void:
-	print("credits")
+	get_tree().change_scene_to_file("res://Scenes/credits.tscn")
 
 
 func _on_how_to_play_pressed() -> void:
-	print("How to play")
-
+	get_tree().change_scene_to_file("res://Scenes/how_to_play.tscn")
 
 func _on_start_mouse_entered() -> void:
 	start_sprite.play("hover")

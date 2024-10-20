@@ -30,11 +30,24 @@ const PLAYER_BULLET = preload("res://Scenes/player_bullet.tscn")
 var phase_two_started : bool = false
 
 
-var can_shoot_bullets : bool = true
-var can_shoot_infection : bool = true
-var can_shoot_molotov : bool = true
+var can_shoot_bullets : bool = false
+var can_shoot_infection : bool = false
+var can_shoot_molotov : bool = false
 
-
+func can_shoot_bull():
+	can_shoot_bullets = true
+	can_shoot_infection = false
+	can_shoot_molotov = false
+	
+func can_shoot_infect():
+	can_shoot_bullets = false
+	can_shoot_infection = true
+	can_shoot_molotov = false
+	
+func can_shoot_molo():
+	can_shoot_bullets = false
+	can_shoot_infection = false
+	can_shoot_molotov = true
 
 func _ready():
 	axis_lock_linear_y = true
@@ -84,8 +97,7 @@ func process_attack():
 	
 	
 	pass
-	
-	
+
 
 
 func phase_deux_started():

@@ -35,7 +35,6 @@ visible = false
 [node name="Player" parent="." instance=ExtResource("1_6vcdi")]
 
 [node name="WeaponSelect2" parent="Player" instance=ExtResource("2_75no7")]
-visible = false
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_sx71t")

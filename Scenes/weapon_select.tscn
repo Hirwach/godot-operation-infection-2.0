@@ -1,6 +1,54 @@
-[gd_scene load_steps=2 format=3 uid="uid://bkhjnb5hie56l"]
+[gd_scene load_steps=11 format=3 uid="uid://bkhjnb5hie56l"]
 
 [ext_resource type="Script" path="res://Scripts/weapon_select.gd" id="1_1q8ja"]
+[ext_resource type="Texture2D" uid="uid://drsfix8u8i6qw" path="res://Sprites/virus_faces/v_mask_red.png" id="2_vcbo1"]
+[ext_resource type="Texture2D" uid="uid://b1uta3tbr2g88" path="res://Sprites/virus_faces/v_mask_orange.png" id="3_rv0gw"]
+[ext_resource type="Texture2D" uid="uid://cpc5kp1sw1ve5" path="res://Sprites/virus_faces/v_mask_blue.png" id="4_kbg67"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mm0kc"]
+atlas = ExtResource("2_vcbo1")
+region = Rect2(0, 0, 400, 400)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6vncg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mm0kc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krg2a"]
+atlas = ExtResource("3_rv0gw")
+region = Rect2(0, 0, 400, 400)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nvflu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krg2a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnct7"]
+atlas = ExtResource("4_kbg67")
+region = Rect2(0, 0, 400, 400)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gwl1v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnct7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="WeaponSelect" type="Control"]
 z_index = -1
@@ -22,27 +70,58 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -196.0
+offset_left = -185.0
 offset_top = -50.0
-offset_right = 202.0
-offset_bottom = 51.0
+offset_right = -95.0
+offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 0
 
 [node name="Weapon1" type="Button" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
-text = "W1"
+size_flags_vertical = 3
+flat = true
 
-[node name="Weapon2" type="Button" parent="CanvasLayer/VBoxContainer"]
-layout_mode = 2
-text = "W2"
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/VBoxContainer/Weapon1"]
+position = Vector2(46, 45)
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_6vncg")
 
-[node name="Weapon3" type="Button" parent="CanvasLayer/VBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = 497.0
+offset_top = 275.0
+offset_right = 589.0
+offset_bottom = 366.0
+
+[node name="Weapon2" type="Button" parent="CanvasLayer/VBoxContainer2"]
 layout_mode = 2
-text = "W3
+size_flags_vertical = 3
+flat = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/VBoxContainer2/Weapon2"]
+position = Vector2(45, 45)
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_nvflu")
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = 601.0
+offset_top = 278.0
+offset_right = 685.0
+offset_bottom = 361.0
+
+[node name="Weapon3" type="Button" parent="CanvasLayer/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "
 "
+flat = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/VBoxContainer3/Weapon3"]
+position = Vector2(43, 43)
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_gwl1v")
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Weapon1" to="." method="_on_weapon_1_pressed"]
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/Weapon2" to="." method="_on_weapon_2_pressed"]
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/Weapon3" to="." method="_on_weapon_3_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer2/Weapon2" to="." method="_on_weapon_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer3/Weapon3" to="." method="_on_weapon_3_pressed"]

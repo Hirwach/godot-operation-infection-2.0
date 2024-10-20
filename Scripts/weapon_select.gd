@@ -1,6 +1,7 @@
 extends Control
 @onready var weapon_select: Control = $"."
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
+@onready var player: CharacterBody3D = $".."
 
 
 func _process(delta: float) -> void:
@@ -13,18 +14,18 @@ func CurrentWeapon():
 	canvas_layer.visible = true
 
 func _on_weapon_1_pressed() -> void:
-	print("Weapon 1 selected")
+	player.can_shoot_bull()
 	canvas_layer.visible = false
 	Engine.time_scale = 1
 
 
 func _on_weapon_2_pressed() -> void:
-	print("Weapon 2 selected")
+	player.can_shoot_infect()
 	canvas_layer.visible = false
 	Engine.time_scale = 1
 
 
 func _on_weapon_3_pressed() -> void:
-	print("Weapon 3 selected")
+	player.can_shoot_molo()
 	canvas_layer.visible = false
 	Engine.time_scale = 1

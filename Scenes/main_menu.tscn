@@ -100,6 +100,7 @@ grow_horizontal = 2
 [node name="START" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+flat = true
 
 [node name="StartSprite" type="AnimatedSprite2D" parent="VBoxContainer/START"]
 position = Vector2(110.046, 56.75)
@@ -118,6 +119,7 @@ offset_bottom = 605.0
 [node name="QUIT" type="Button" parent="VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
+flat = true
 
 [node name="Sprite2D" type="Sprite2D" parent="VBoxContainer2/QUIT"]
 position = Vector2(46, 47)
@@ -141,6 +143,7 @@ grow_vertical = 2
 [node name="CREDITS" type="Button" parent="VBoxContainer3"]
 layout_mode = 2
 size_flags_vertical = 3
+flat = true
 
 [node name="CreditSprite" type="AnimatedSprite2D" parent="VBoxContainer3/CREDITS"]
 position = Vector2(101, 47)
@@ -158,6 +161,7 @@ scale = Vector2(5.03353, 2.31306)
 [node name="HowToPlay" type="Button" parent="VBoxContainer4"]
 layout_mode = 2
 size_flags_vertical = 3
+flat = true
 
 [node name="Sprite2D" type="Sprite2D" parent="VBoxContainer4/HowToPlay"]
 position = Vector2(10.132, 19.0224)

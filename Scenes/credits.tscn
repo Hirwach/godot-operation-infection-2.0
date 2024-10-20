@@ -1,0 +1,97 @@
+[gd_scene load_steps=8 format=3 uid="uid://b7mi48yjvo2i4"]
+
+[ext_resource type="Script" path="res://Scripts/credits.gd" id="1_p2g6a"]
+[ext_resource type="Texture2D" uid="uid://b1f623h1ptis1" path="res://Sprites/buttons/button_back_basic.png" id="2_xjybb"]
+[ext_resource type="Texture2D" uid="uid://impi70rj0ab" path="res://Sprites/buttons/button_back_hover.png" id="3_rxa57"]
+[ext_resource type="Texture2D" uid="uid://q7hagxgyhk4s" path="res://Sprites/bg/bg_red_novignette.png" id="4_e28pd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ksukw"]
+atlas = ExtResource("2_xjybb")
+region = Rect2(0, 0, 304, 348)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0vik"]
+atlas = ExtResource("3_rxa57")
+region = Rect2(0, 0, 304, 348)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m1xg8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ksukw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d0vik")
+}],
+"loop": true,
+"name": &"hover",
+"speed": 5.0
+}]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p2g6a")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = 47.0
+offset_top = 42.0
+offset_right = 55.0
+offset_bottom = 50.0
+scale = Vector2(21.0348, 18.1434)
+
+[node name="Back" type="Button" parent="CanvasLayer/VBoxContainer"]
+z_index = 10
+layout_mode = 2
+size_flags_vertical = 3
+flat = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/VBoxContainer/Back"]
+position = Vector2(3.80451, 3.69281)
+scale = Vector2(0.0193829, 0.02)
+sprite_frames = SubResource("SpriteFrames_m1xg8")
+autoplay = "default"
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 365.0
+offset_top = 139.0
+offset_right = 579.0
+offset_bottom = 396.0
+scale = Vector2(1.93745, 1.64501)
+text = "Credits
+Victor Iliescu - Team Lead\\par
+Ghassan Naja - CTO
+C\\'e9dric Hkizimana - Git Master
+Malik Mburu - Senior UX Expert
+Faisal Bari - Principal Hardware Engineer
+Conor Geoghegan - Art Director
+
+
+
+"
+text_overrun_behavior = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+z_index = -5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_e28pd")
+expand_mode = 2
+
+[connection signal="mouse_entered" from="CanvasLayer/VBoxContainer/Back" to="." method="_on_back_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/VBoxContainer/Back" to="." method="_on_back_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Back" to="." method="_on_back_pressed"]
