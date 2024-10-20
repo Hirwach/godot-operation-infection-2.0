@@ -1,4 +1,5 @@
 extends CharacterBody3D
+signal PlayerDeath
 
 @onready var bullet_cooldown = $BulletCooldown
 @onready var infection_countdown = $InfectionCountdown
@@ -90,7 +91,7 @@ func process_attack():
 func phase_deux_started():
 	phase_two_started = true
 
-
+	
 
 func shoot_molotov():
 	
@@ -183,6 +184,8 @@ func get_enemies_in_radius(radius : float) -> Array[Node3D] :
 func take_damage(value : int):
 	health -= value
 	SignalManager.new_player_health.emit(health)
+	if health <= 0:
+		PlayerDeath.emit()
 
 
 

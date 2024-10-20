@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkhjnb5hie56l"]
+
+[ext_resource type="Script" path="res://Scripts/weapon_select.gd" id="1_1q8ja"]
+
+[node name="WeaponSelect" type="Control"]
+z_index = -1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1q8ja")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -196.0
+offset_top = -50.0
+offset_right = 202.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+
+[node name="Weapon1" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "W1"
+
+[node name="Weapon2" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "W2"
+
+[node name="Weapon3" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "W3
+"
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Weapon1" to="." method="_on_weapon_1_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Weapon2" to="." method="_on_weapon_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Weapon3" to="." method="_on_weapon_3_pressed"]

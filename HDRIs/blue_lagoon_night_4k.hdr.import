@@ -3,15 +3,16 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cea2dxy0uxckp"
-path="res://.godot/imported/blue_lagoon_night_4k.hdr-109bd28280fecc9db37b19a401d28665.ctex"
+path.bptc="res://.godot/imported/blue_lagoon_night_4k.hdr-109bd28280fecc9db37b19a401d28665.bptc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://HDRIs/blue_lagoon_night_4k.hdr"
-dest_files=["res://.godot/imported/blue_lagoon_night_4k.hdr-109bd28280fecc9db37b19a401d28665.ctex"]
+dest_files=["res://.godot/imported/blue_lagoon_night_4k.hdr-109bd28280fecc9db37b19a401d28665.bptc.ctex"]
 
 [params]
 

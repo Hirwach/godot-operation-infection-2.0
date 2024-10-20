@@ -1,6 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://5jye7q3afgvi"]
+[gd_scene load_steps=17 format=3 uid="uid://5jye7q3afgvi"]
 
 [ext_resource type="PackedScene" uid="uid://xen44dgkpsii" path="res://Scenes/player.tscn" id="1_6vcdi"]
+[ext_resource type="PackedScene" uid="uid://devp7rj4i4j3e" path="res://Scenes/death_menu.tscn" id="1_sante"]
+[ext_resource type="PackedScene" uid="uid://bkhjnb5hie56l" path="res://Scenes/weapon_select.tscn" id="2_75no7"]
 [ext_resource type="PackedScene" uid="uid://dfkq7edr7gkaj" path="res://Scenes/plane.tscn" id="2_ghsky"]
 [ext_resource type="Texture2D" uid="uid://cea2dxy0uxckp" path="res://HDRIs/blue_lagoon_night_4k.hdr" id="3_68vv7"]
 [ext_resource type="PackedScene" uid="uid://br6n8rvcyi5bs" path="res://Scenes/wall_cube.tscn" id="3_kabww"]
@@ -27,7 +29,13 @@ sky = SubResource("Sky_msfd1")
 
 [node name="Main" type="Node3D"]
 
+[node name="DeathMenu" parent="." instance=ExtResource("1_sante")]
+visible = false
+
 [node name="Player" parent="." instance=ExtResource("1_6vcdi")]
+
+[node name="WeaponSelect2" parent="Player" instance=ExtResource("2_75no7")]
+visible = false
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_sx71t")
@@ -212,6 +220,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.5221, 0, 35.6403)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.5306, 0, -39.8202)
 
 [node name="Control" parent="." instance=ExtResource("9_lwwcf")]
+z_as_relative = false
 
 [node name="Spawners" type="Node3D" parent="."]
 
@@ -241,3 +250,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.3135, 0, 78.6449)
 
 [node name="BlobSpawner9" parent="Spawners" instance=ExtResource("10_uiwuj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.3854, 0, 87.6045)
+
+[connection signal="PlayerDeath" from="Player" to="DeathMenu" method="_on_player_player_death"]

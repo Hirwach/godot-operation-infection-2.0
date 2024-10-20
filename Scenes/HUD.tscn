@@ -12,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_u7l7k")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -27,10 +28,12 @@ size_flags_vertical = 4
 
 [node name="Health" type="Label" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
+mouse_filter = 1
 text = "Health : 999"
 label_settings = SubResource("LabelSettings_ewg2r")
 
 [node name="EnemiesLeft" type="Label" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
+mouse_filter = 1
 text = "Enemies left : 6"
 label_settings = SubResource("LabelSettings_ewg2r")
